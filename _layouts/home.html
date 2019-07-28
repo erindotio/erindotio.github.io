@@ -1,22 +1,22 @@
 {% include header.html %}
 
 {% if site.layout == 'stacked' %}
-  <div class="container-lg py-6 p-responsive text-center">
+  <div class="container-lg pb-6 p-responsive">
     {% include masthead.html metadata=true %}
 
     <div {% if site.style == 'dark' %}class="text-white"{% endif %}>
       {{ content }}
     </div>
 
-    <div class="my-6">
+    <!-- <div class="my-6">
       {% include projects.html %}
-    </div>
+    </div> -->
 
-    {% if site.topics %}
+    <!-- {% if site.topics %}
       <div class="my-6">
         {% include interests.html %}
       </div>
-    {% endif %}
+    {% endif %} -->
 
     {% unless posts_total == 0 %}
       <div class="my-6">

@@ -3,6 +3,9 @@
 @import url('https://unpkg.com/primer/build/build.css');
 @import 'highlight-syntax';
 
+:root {
+  --black: #000000;
+}
 
 // If a user adds a custom font, this component will stop it from bleeding into GitHub components:
 .github-component {
@@ -10,13 +13,13 @@
 }
 
 .repo-language-color {
-    filter: brightness(125%) !important;
-    border-radius: 50%;
-    display: inline-block;
-    height: 12px;
-    position: relative;
-    top: 2px;
-    width: 12px;
+  filter: brightness(125%) !important;
+  border-radius: 50%;
+  display: inline-block;
+  height: 12px;
+  position: relative;
+  top: 2px;
+  width: 12px;
 }
 
 .emoji {
@@ -51,4 +54,13 @@
 
 .min-height-full {
   min-height: 100vh;
+}
+
+.metadata {
+  opacity: .4;
+
+  a {
+    color: var(--black);
+    text-decoration: underline;
+  }
 }
