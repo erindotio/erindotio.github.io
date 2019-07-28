@@ -1,59 +1,38 @@
 {% if site.layout == 'stacked' %}
-  {% assign metadata_styles = 'metadata d-flex flex-items-center mr-3 mb-1 mb-md-0' %}
+  {% assign metadata_styles = 'metadata text-uppercase f5 d-flex flex-items-center mr-3 mb-1 mb-md-0' %}
 {% else %}
   {% assign metadata_styles = 'd-flex flex-items-center mb-3' %}
 {% endif %}
 
-<div class="d-flex flex-items-end">
-  <img src="{{ user.avatar_url }}" style="max-width: 150px;">
-  <div class="pl-3">
-    <h1 class="{% if site.style == 'dark' %}text-white{% endif %} mb-2 lh-condensed">
-      {% if user.name %}{{ user.name }}{% else %}{{ user.login }}{% endif %}</h1>
-    {% if include.metadata %}
-    <div class="d-flex f4">
-      <!-- {% if user.name %}
-        <div class="{{ metadata_styles }}">
-          {% octicon mark-github height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:GitHub %}
-          <a href="https://github.com/{{ user.login }}" {% if site.style == 'dark' %}class="text-white"{% endif %}>
-            {{ user.login }}
-          </a>
-        </div>
-      {% endif %} -->
-      {% if user.email %}
-        <div class="{{ metadata_styles }}">
-          {% octicon mail height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:email %}
-          <a href="mailto:{{ user.email }}" {% if site.style == 'dark' %}class="text-white"{% endif %}>
-            {{ user.email }}
-          </a>
-        </div>
-      {% endif %}
-      <!-- {% if user.location %}
-        <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %}">
-          {% octicon location height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Location %}
-          {{ user.location }}
-        </div>
-      {% endif %} -->
-      {% if site.social_media %}
-        <div class="metadata d-flex flex-wrap flex-items-start {% if site.layout == 'stacked' %}flex-justify-left mt-1 mt-md-3{% endif %}">
-          {% for account in site.social_media %}
-            <div class="{% unless forloop.last == true %}mr-3{% endunless %} mb-3">
-              {% assign service_shortname = account[0] %}
-              {% assign service = site.data.social_media[service_shortname] %}
-              <a href="{{ service.profile_url_prefix }}{{ account[1] }}">
-                {% if service.name == "Website" %}
-                  <span>{{ account[1] }}</span>
-                {% else %}
-                  <span>{{ service.name }}</span>
-                {% endif %}
-              </a>
-            </div>
-          {% endfor %}
-        </div>
-      {% endif %}
-      {% if user.hireable %}
-        <span title="Hire me" class="d-inline-block f5 rounded-2 text-white bg-green py-1 px-2">Available for hire</span>
-      {% endif %}
-    </div>
-  {% endif %}
+<div class="avatar-container pb-6 p-responsive">
+  <img src="{{ user.avatar_url }}" class="avatar" style="max-width: 150px;">
+</div>
+<div class="">
+  <h1 class="{% if site.style == 'dark' %}text-white {% endif %}mr-3 lh-condensed name-title">
+    {% if user.name %}{{ user.name }}{% else %}{{ user.login }}{% endif %}</h1>
+  {% if include.metadata %}
+  <div class="f3 mb-2">is an autodidactic sponge with over 8 years of experience as a designer and front-end software developer.</div>
+  <div class="d-flex f4">
+    {% if site.social_media %}
+      <div class="metadata f5 text-uppercase d-flex flex-wrap flex-items-start {% if site.layout == 'stacked' %}flex-justify-left{% endif %}">
+        {% for account in site.social_media %}
+          <div class="{% unless forloop.last == true %}mr-3{% endunless %} mb-3">
+            {% assign service_shortname = account[0] %}
+            {% assign service = site.data.social_media[service_shortname] %}
+            <a href="{{ service.profile_url_prefix }}{{ account[1] }}">
+              {% if service.name == "Website" %}
+                <span>erin.io</span>
+              {% else %}
+                <span>{{ service.name }}</span>
+              {% endif %}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if user.hireable %}
+      <span title="Hire me" class="d-inline-block f5 rounded-2 text-white bg-green py-1 px-2">Available for hire</span>
+    {% endif %}
   </div>
+{% endif %}
 </div>
